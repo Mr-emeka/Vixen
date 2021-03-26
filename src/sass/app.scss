@@ -1,0 +1,89 @@
+@import "./variables";
+@import "./mixins";
+
+// styles for components
+@import "./components/main.scss";
+
+// styles for pages
+@import "./pages/main.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,500;1,900&display=swap");
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body {
+    background: $bg-color;
+    color: $white;
+    a {
+        text-decoration: none;
+    }
+    ul.pagination {
+        display: inline-block;
+        font-size: 1em;
+        li {
+            display: inline-block;
+            border: 1px solid rgb(224, 224, 224);
+            color: $white;
+            cursor: pointer;
+            margin-right: 3px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            &.active {
+                background: rgb(224, 224, 224);
+                outline: none;
+            }
+            a {
+                padding: 10px 15px;
+                display: inline-block;
+                color: #000;
+                outline: none;
+            }
+        }
+    }
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2em;
+        background: $black;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        @include media-query($medium-down) {
+            flex-direction: column;
+        }
+        &__brand {
+            a {
+                color: $white;
+                &:hover {
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                &:active {
+                    text-decoration: none;
+                }
+            }
+        }
+        &__search {
+            width: auto;
+            height: 30px;
+            padding: 0 0.4em;
+            background: $white;
+            border: none;
+            outline: none;
+            font-size: 1em;
+        }
+    }
+    .d-flex {
+        display: flex;
+        flex-direction: row;
+        padding: 1em;
+        @include media-query($small) {
+            flex-direction: column;
+        }
+    }
+}

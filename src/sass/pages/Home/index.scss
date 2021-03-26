@@ -1,0 +1,17 @@
+.home {
+    padding: 0 2em;
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 1rem;
+        text-align: center;
+        @include media-query($small) {
+            grid-template-columns: 1fr;
+        }
+    }
+    &__pagination {
+        display: flex;
+        margin:2em 0;
+        justify-content: center;
+    }
+}
