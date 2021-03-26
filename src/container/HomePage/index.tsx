@@ -17,10 +17,7 @@ const Home: React.FC = () => {
     (state: SelectState) => state.movies.movies,
     shallowEqual
   )
-  const loading: boolean = useSelector(
-    (state: SelectState) => state.movies.loading,
-    shallowEqual
-  )
+
   const partialMovies: IMovie[] = useSelector(
     (state: SelectState) => state.movies.partialMovies,
     shallowEqual
