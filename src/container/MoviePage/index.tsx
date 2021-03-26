@@ -20,7 +20,10 @@ const MoviePage: React.FC<IProps> = ({ match }) => {
         shallowEqual
     )
     const dispatch = useDispatch();
-    console.log(movie)
+    const loading: boolean = useSelector(
+        (state: SelectState) => state.movies.loading,
+        shallowEqual
+    )
 
 
     useEffect(() => {
@@ -30,7 +33,7 @@ const MoviePage: React.FC<IProps> = ({ match }) => {
 
 
     return <Layout show={false}>
-        <MoviePageView movie={movie} />
+        {!loading && <MoviePageView movie={movie} />}
     </Layout>
 }
 
