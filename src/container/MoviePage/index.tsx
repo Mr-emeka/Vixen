@@ -4,6 +4,8 @@ import MoviePageView from '../../components/views/Movie'
 import { fetchMovieAsync } from '../../redux/movie/action'
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { IMovie } from '../../types'
+import Loading from '../../components/layout/loadingScreen';
+
 
 export type IProps = {
     match: any,
@@ -33,7 +35,7 @@ const MoviePage: React.FC<IProps> = ({ match }) => {
 
 
     return <Layout show={false}>
-        {!loading && <MoviePageView movie={movie} />}
+        {loading ? <Loading /> : <MoviePageView movie={movie} />}
     </Layout>
 }
 

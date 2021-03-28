@@ -11,7 +11,12 @@
     }
     &__pagination {
         display: flex;
-        margin:2em 0;
+        margin: 2em 0;
         justify-content: center;
+    }
+    &__noResult {
+        display: flex;
+        justify-content: center;
+        margin: 2em 0;
     }
 }

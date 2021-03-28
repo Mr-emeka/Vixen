@@ -1,4 +1,5 @@
 import * as actionTypes from "../actions";
+import { baseURL } from "../../helpers";
 
 import { IMovie, DispatchType } from "../../types";
 
@@ -13,7 +14,7 @@ export function fetchMoviesSuccess(movies: IMovie[]) {
     payload: movies,
   };
 }
-export function fetchMoviesError(error: Error) {
+export function fetchMoviesError(error: string) {
   return {
     type: actionTypes.FETCH_MOVIES_ERROR,
     payload: error,
@@ -34,7 +35,7 @@ export function fetchMovieSuccess(movie: IMovie) {
   };
 }
 
-export function fetchMovieError(error: Error) {
+export function fetchMovieError(error:string) {
   return {
     type: actionTypes.FETCH_MOVIE_ERROR,
     payload: error,
@@ -48,32 +49,13 @@ export function searchMovie(searchTerm: string) {
   };
 }
 
-export function setOffset(offset: number) {
-  return {
-    type: actionTypes.SET_OFFSET,
-    payload: offset,
-  };
-}
 
-export function setPageCount(pageCount: number) {
-  return {
-    type: actionTypes.SET_PAGE_COUNT,
-    payload: pageCount,
-  };
-}
-
-export function setPartialMovies(movies: IMovie[]) {
-  return {
-    type: actionTypes.SET_PARTIAL_MOVIES,
-    payload: movies,
-  };
-}
 /** Asynchronous request */
 
 export function fetchMovieAsync(id: number) {
   return (dispatch: DispatchType) => {
     dispatch(fetchMoviesPending());
-    fetch(`https://api.tvmaze.com/shows/${id}?embed=cast`)
+    fetch(`${baseURL}/${id}?embed=cast`)
       .then((res) => res.json())
       .then((res) => {
         dispatch(fetchMovieSuccess(res));
@@ -86,7 +68,7 @@ export function fetchMovieAsync(id: number) {
 export function fetchMoviesAsync() {
   return (dispatch: DispatchType) => {
     dispatch(fetchMoviesPending());
-    fetch("https://api.tvmaze.com/shows")
+    fetch(`${baseURL}`)
       .then((res) => res.json())
       .then((res) => {
         dispatch(fetchMoviesSuccess(res));
@@ -97,14 +79,3 @@ export function fetchMoviesAsync() {
   };
 }
 
-export function setOffsetAsync(offset: number) {
-  return (dispatch: DispatchType) => {
-    dispatch(setOffset(offset));
-  };
-}
-
-export function setPageCountAsync(pageCount: number) {
-  return (dispatch: DispatchType) => {
-    dispatch(setPageCount(pageCount));
-  };
-}

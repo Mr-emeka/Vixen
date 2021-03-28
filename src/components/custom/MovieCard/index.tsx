@@ -2,8 +2,8 @@ import React from 'react'
 
 
 type IProps = {
-    name: string,
-    url: string,
+    name?: string,
+    url?: string,
     genres?: string[],
     premiered?: string,
 }
@@ -14,7 +14,6 @@ const MovieCard: React.FC<IProps> = ({ name, url }) => {
             <h3 className="card__text">{name}</h3>
         </div>
     </div>
-
 }
 
 export default MovieCard;

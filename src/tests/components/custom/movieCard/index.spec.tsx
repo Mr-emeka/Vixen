@@ -1,10 +1,14 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import React from "react";
+import { shallow } from 'enzyme';
 import MovieCard from '../../../../components/custom/MovieCard';
 
-
-test('renders learn react link', () => {
-    render(<MovieCard name="" url="" premiered="" genres={[]} idx={1} />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+describe('Movie Card', () => {
+    it('should render correctly', () => {
+        const Card = shallow(<MovieCard url="" name="movie 1" />);
+        const img = Card.find('.card__img')
+        const text = Card.find('.card__text')
+        expect(text.text()).toEqual('movie 1')
+        expect(img.props().alt).toEqual(`card__movie 1`)
+        expect(Card).toMatchSnapshot();
+    });
 });

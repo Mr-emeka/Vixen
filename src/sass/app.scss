@@ -18,6 +18,7 @@
 body {
     background: $bg-color;
     color: $white;
+    font-family: Poppins;
     a {
         text-decoration: none;
     }
@@ -39,8 +40,14 @@ body {
             a {
                 padding: 10px 15px;
                 display: inline-block;
-                color: #000;
+                color: $white;
                 outline: none;
+                font-weight: bold;
+            }
+        }
+        li.active {
+            a {
+                color: $black !important;
             }
         }
     }
